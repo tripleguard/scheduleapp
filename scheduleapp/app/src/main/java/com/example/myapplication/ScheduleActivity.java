@@ -68,8 +68,9 @@ public class ScheduleActivity extends AppCompatActivity {
             JSONObject object = new JSONObject(jsonString);
             JSONArray raspArray = object.getJSONObject("data").getJSONArray("rasp");
             ArrayList<String> scheduleList = new ArrayList<>();
+            String groupName = raspArray.getJSONObject(0).getString("группа");
+            scheduleList.add("Группа: " + groupName);
             scheduleList.add(currentDate);
-
             for (int i = 0; i < raspArray.length(); ++i) {
                 JSONObject lesson = raspArray.getJSONObject(i);
                 String date = lesson.getString("дата").split("T")[0];
